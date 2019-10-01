@@ -38,6 +38,16 @@ func main() {
 			}
 		} else if fungsi == "input" {
 			if status == 1 {
+
+				for i := 0; i < batasinput; i++ {
+					if statusdelete == 0 {
+						if tipeidentitas[i] == "kosong"{
+							statusdelete = 1
+							indexdelete = i
+						}
+					}
+				}
+
 				if batasinput != index {
 					nomorloker[batasinput] = batasinput + 1
 					tipeidentitas[batasinput] = strings.ToUpper(data1)
@@ -53,7 +63,6 @@ func main() {
 					fmt.Println("Kartu identitas tersimpan di loker nomor", indexdelete + 1)
 					
 					statusdelete = 0
-					indexdelete = 0
 				} else {
 					fmt.Println("Maaf loker sudah penuh")
 				}
@@ -72,14 +81,12 @@ func main() {
 			
 			}
 			
-			indexdelete = i - 1
 			if tipeidentitas[i-1] != "" {
 				tipeidentitas[i-1] = "kosong"
 				nomoridentitas[i-1] = "kosong"
 				
 				fmt.Println("Loker nomor", i, "berhasil dikosongkan.")
 				
-				statusdelete = 1
 			} else {
 				fmt.Println("Nomor loker tidak tersedia.")
 			}
